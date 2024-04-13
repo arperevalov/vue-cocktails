@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from './routes/Home.vue';
 import Cocktail from './routes/Cocktail.vue';
+import Error from './routes/Error.vue';
 
 const pinia = createPinia();
 const router = createRouter({
@@ -15,6 +16,9 @@ const router = createRouter({
         },
         {
             path: '/cocktail/:name', component: Cocktail,
+        },
+        {
+            path: '/404', component: Error,
         }
     ]
 })

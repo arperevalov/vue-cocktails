@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    Error
+    Error occured
 </template>
 
 <style scoped>
