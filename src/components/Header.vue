@@ -3,7 +3,7 @@
 
 <template>
     <header>
-        <RouterLink to="/cocktail/margarita" class="link" active-class="active">
+        <RouterLink to="/" class="link" active-class="active">
             Margarita
         </RouterLink>
         <RouterLink to="/cocktail/mojito" class="link" active-class="active">
