@@ -21,8 +21,6 @@ const useDefaultStore = defineStore(
                         const response = await axios.get(`${import.meta.env.VITE_API}/search.php?s=${name}`);
                         const value = response.data.drinks[0];
 
-                        console.log(value);
-
                         this.cocktails = {
                             ...this.cocktails,
                             [name]: {
