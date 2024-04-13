@@ -19,7 +19,7 @@ const router = createRouter({
             component: Cocktail,
         },
         {
-            path: '/404', 
+            path: '/:pathMatch(.*)*', 
             component: Error,
         }
     ]
