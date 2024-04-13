@@ -3,7 +3,6 @@ import './style.css'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './routes/Home.vue';
 import Cocktail from './routes/Cocktail.vue';
 import Error from './routes/Error.vue';
 
@@ -12,13 +11,16 @@ const router = createRouter({
     history: createWebHistory('/'),
     routes: [
         {
-            path: '/', component: Home,
+            path: '/', 
+            redirect: '/cocktail/margarita',
         },
         {
-            path: '/cocktail/:name', component: Cocktail,
+            path: '/cocktail/:name', 
+            component: Cocktail,
         },
         {
-            path: '/404', component: Error,
+            path: '/404', 
+            component: Error,
         }
     ]
 })
