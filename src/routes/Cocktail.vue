@@ -1,18 +1,28 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import useDefaultStore from '../store/default';
 import { computed, watch } from 'vue';
 
 const { getCocktail, setCocktail } = useDefaultStore();
+const router = useRouter();
 const route = useRoute();
 
-setCocktail(route.params.name as string);
+const setCocktailAction = () => {
+    const value = route.params.name as string ?? 'margarita';
+    setCocktail(value)
+    .catch(() => {
+        router.push('/404');
+    });
+}
 
-const cocktail = computed(() => getCocktail(route.params.name as string));
+setCocktailAction();
+
+const cocktail = computed(() => getCocktail(route.params.name as string ?? 'margarita'));
 
 watch(() => [route.params.name], () => {
-    setCocktail(route.params.name as string);
+    setCocktailAction();
 });
+
 </script>
 
 <template>
