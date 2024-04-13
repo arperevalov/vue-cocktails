@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView />
+    Error
 </template>
 
 <style scoped>

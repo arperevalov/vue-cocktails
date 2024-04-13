@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView />
+    Cocktail
 </template>
 
 <style scoped>
