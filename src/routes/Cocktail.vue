@@ -26,29 +26,39 @@ watch(() => [route.params.name], () => {
 </script>
 
 <template>
-    <template v-if="cocktail">
-        <div>
-            <strong>
-                {{ cocktail.strDrink }}
-            </strong>
+    <div class="cocktail" v-if="cocktail">
+        <div class="cocktail__content">
+            <div>
+                <strong>
+                    {{ cocktail.strDrink }}
+                </strong>
+            </div>
+            <div>
+                {{ cocktail.strCategory }}
+                {{ cocktail.strAlcoholic }}
+                {{ cocktail.strGlass }}
+            </div>
+            <div>
+                <strong>
+                    List of ingredients
+                </strong>
+            </div>
+            <div v-for="index in 14">
+                {{ cocktail[`strIngredient${index}`] }}
+                {{ cocktail[`strMeasure${index}`] }}
+            </div>
         </div>
-        <div>
-            {{ cocktail.strCategory }}
-            {{ cocktail.strAlcoholic }}
-            {{ cocktail.strGlass }}
-        </div>
-        <div>
-            <strong>
-                List of ingredients
-            </strong>
-        </div>
-        <div v-for="index in 14">
-            {{ cocktail[`strIngredient${index}`] }}
-            {{ cocktail[`strMeasure${index}`] }}
-        </div>
-        <img :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink">
-    </template>
+        <img class="cocktail__image" :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink">
+    </div>
 </template>
 
-<style scoped>
+<style scoped lang="sass">
+    .cocktail
+        display: flex
+        flex-wrap: wrap
+
+        &__content,
+        &__image
+            flex: 0 0 auto
+            width: 100%            
 </style>
