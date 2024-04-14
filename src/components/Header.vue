@@ -1,23 +1,35 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import useNavStore from '../store/nav';
+
+const { getItems, hideItem, restoreItems } = useNavStore();
+
+const items = computed(() => getItems());
+
+const onRemoveButtonClick = (id: string) => {
+    hideItem(id);
+}
 </script>
 
 <template>
     <header class="header">
-        <RouterLink to="/" class="header__link" active-class="active">
-            Margarita
-        </RouterLink>
-        <RouterLink to="/cocktail/mojito" class="header__link" active-class="active">
-            Mojito
-        </RouterLink>
-        <RouterLink to="/cocktail/a1" class="header__link" active-class="active">
-            A1
-        </RouterLink>
-        <RouterLink to="/cocktail/kir" class="header__link" active-class="active">
-            Kir
-        </RouterLink>
+        <div v-for="item in items">
+            <template v-if="item.visible">
+                <RouterLink :to="item.id" class="header__link" active-class="active">
+                    {{ item.name }}
+                </RouterLink>
+
+                <button @click="() => { onRemoveButtonClick(item.id) }" type="button">
+                    Удалить
+                </button>
+            </template>
+        </div>
         <RouterLink to="/404" class="header__link" active-class="active">
             404
         </RouterLink>
+        <button @click="restoreItems" type="button">
+            Восстановить удаленные
+        </button>
     </header>
 </template>
 
