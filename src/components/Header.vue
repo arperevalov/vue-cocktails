@@ -15,7 +15,7 @@ const onRemoveButtonClick = (id: string) => {
     <header class="header">
         <div v-for="item in items">
             <template v-if="item.visible">
-                <RouterLink :to="item.id" class="header__link" active-class="active">
+                <RouterLink :to="`/cocktail/${item.id}`" class="header__link" active-class="active">
                     {{ item.name }}
                 </RouterLink>
 
