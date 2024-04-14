@@ -2,13 +2,17 @@
 import { useRoute, useRouter } from 'vue-router';
 import useDefaultStore from '../store/default';
 import { computed, watch } from 'vue';
+import useNavStore from '../store/nav';
 
 const { getCocktail, setCocktail } = useDefaultStore();
+const { getItems } = useNavStore();
 const router = useRouter();
 const route = useRoute();
 
+const navItems = getItems();
+
 const setCocktailAction = () => {
-    const value = route.params.name as string ?? 'margarita';
+    const value = route.params.name as string ?? navItems[0].id;
     setCocktail(value)
     .catch(() => {
         router.push('/404');
@@ -17,7 +21,7 @@ const setCocktailAction = () => {
 
 setCocktailAction();
 
-const cocktail = computed(() => getCocktail(route.params.name as string ?? 'margarita'));
+const cocktail = computed(() => getCocktail(route.params.name as string ?? navItems[0].id));
 
 watch(() => [route.params.name], () => {
     setCocktailAction();
