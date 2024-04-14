@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import useNavStore from '../store/nav';
+import useLocalStorageDeletedCocktails from '../composables/useLocalStorageDeletedCocktails';
 
-const { getItems, hideItem, restoreItems } = useNavStore();
+const { getItems, hideItem, restoreItems, setRemovedValues } = useNavStore();
+const { getStorageItems } = useLocalStorageDeletedCocktails();
 
 const items = computed(() => getItems());
 
 const onRemoveButtonClick = (id: string) => {
     hideItem(id);
 }
+
+onMounted(() => {
+    const values = getStorageItems();
+    setRemovedValues(values);
+})
 </script>
 
 <template>
