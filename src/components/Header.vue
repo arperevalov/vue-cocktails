@@ -9,8 +9,11 @@ const { getStorageItems } = useLocalStorageDeletedCocktails();
 
 const items = computed(() => getItems());
 
-const onRemoveButtonClick = (id: string) => {
-    hideItem(id);
+const onRemoveButtonClick = (id: string, name: string) => {
+    const confirmation = confirm(`Вы точно хотите удалить ${name}?`);
+    if (confirmation) {
+        hideItem(id);
+    }
 }
 
 onMounted(() => {
@@ -27,7 +30,7 @@ onMounted(() => {
                     {{ item.name }}
                 </RouterLink>
 
-                <button @click="() => { onRemoveButtonClick(item.id) }" type="button">
+                <button @click="() => { onRemoveButtonClick(item.id, item.name) }" type="button">
                     Удалить
                 </button>
             </template>
