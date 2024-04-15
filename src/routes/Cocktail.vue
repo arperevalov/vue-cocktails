@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ImgLazy from '../components/ImgLazy.vue';
 import { useRoute, useRouter } from 'vue-router';
 import useDefaultStore from '../store/default';
 import { computed, watch } from 'vue';
@@ -52,7 +53,7 @@ watch(() => [route.params.name], () => {
                 {{ cocktail[`strMeasure${index}`] }}
             </div>
         </div>
-        <img class="cocktail__image" :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink">
+        <ImgLazy class="cocktail__image" :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink" />
     </div>
 </template>
 
