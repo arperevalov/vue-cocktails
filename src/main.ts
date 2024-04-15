@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import { createRouter, createWebHistory } from 'vue-router';
 import Cocktail from './routes/Cocktail.vue';
 import Error from './routes/Error.vue';
+import './style.css';
 
 const pinia = createPinia();
 const router = createRouter({
