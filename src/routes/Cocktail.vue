@@ -49,8 +49,8 @@ watch(() => [route.params.name], () => {
                 </strong>
             </div>
             <div v-for="index in 14">
-                {{ cocktail[`strIngredient${index}`] }}
-                {{ cocktail[`strMeasure${index}`] }}
+                {{ cocktail[`strIngredient${index}` as keyof CocktailInterface] }}
+                {{ cocktail[`strMeasure${index}` as keyof CocktailInterface] }}
             </div>
         </div>
         <ImgLazy class="cocktail__image" :src="cocktail.strDrinkThumb" :alt="cocktail.strDrink" />
