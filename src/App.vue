@@ -15,18 +15,27 @@ import Header from './components/Header.vue';
 
 <style scoped lang="sass">
 .main
-  margin: auto
+  margin: 1rem auto
   max-width: 1024px
   width: 100%
   display: flex
   flex-wrap: wrap
+  @media screen and (min-width: 768px)
+    border: 1px solid black
 
-  &__nav
+  &__nav,
+  &__content
     flex: 0 0 auto
     width: 100%
+    padding: 1rem
+
+  &__nav
+    @media screen and (min-width: 768px)
+      width: 30%
+      border-right: 1px solid black
 
   &__content
-    flex:  0 0 auto
-    width: 100%
+    @media screen and (min-width: 768px)
+      width: 70%
 
 </style>
