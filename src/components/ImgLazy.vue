@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, watch, ref } from 'vue';
 
 const props = defineProps<{src: string, alt: string}>();
 
@@ -8,12 +8,20 @@ const element = ref();
 const onIntersection = (entries: IntersectionObserverEntry[]) => {
     const { isIntersecting } = entries[0];
     if (isIntersecting) {
-        element.value.src = props.src;
+        updateSource(props.src)
         observer.disconnect();
     }
 }
 
+const updateSource = (source: string) => {
+    element.value.src = source;
+}
+
 const observer = new IntersectionObserver(onIntersection);
+
+watch(() => [props.src], () => {
+    updateSource(props.src);
+})
 
 onMounted(() => {
     observer.observe(element.value);
