@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import useNavStore from '../store/nav';
+import RestoreButton from './RestoreButton.vue';
 import useLocalStorageDeletedCocktails from '../composables/useLocalStorageDeletedCocktails';
 
-const { getItems, hideItem, restoreItems, setRemovedValues } = useNavStore();
+const { getItems, hideItem, setRemovedValues } = useNavStore();
 const { getStorageItems } = useLocalStorageDeletedCocktails();
 
 const items = computed(() => getItems());
@@ -34,9 +35,7 @@ onMounted(() => {
         <RouterLink to="/404" class="header__link" active-class="active">
             404
         </RouterLink>
-        <button @click="restoreItems" type="button">
-            Восстановить удаленные
-        </button>
+        <RestoreButton />
     </header>
 </template>
 
