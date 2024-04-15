@@ -20,9 +20,9 @@ onMounted(() => {
 
 <template>
     <header class="header">
-        <div v-for="item in items">
+        <div v-for="item, index in items">
             <template v-if="item.visible">
-                <RouterLink :to="`/cocktail/${item.id}`" class="header__link" active-class="active">
+                <RouterLink :to="index === 0 ? `/` : `/cocktail/${item.id}`" class="header__link" active-class="active">
                     {{ item.name }}
                 </RouterLink>
 
